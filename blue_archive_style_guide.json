@@ -1,0 +1,70 @@
+{
+  "project": "Blue Archive Website Style Guide",
+  "version": "1.0.0",
+  "design_tokens": {
+    "colors": {
+      "primary": {
+        "value": "#00AEEF",
+        "description": "Signature Bright Blue, used for primary actions and branding."
+      },
+      "secondary": {
+        "value": "#FFFFFF",
+        "description": "Clean White, used for backgrounds and card surfaces."
+      },
+      "accent": {
+        "value": "#4BDEFF",
+        "description": "Light Blue accent for highlights."
+      },
+      "dark": {
+        "value": "#2B2B2B",
+        "description": "Main text color for high readability."
+      },
+      "background": {
+        "value": "#F4F9FF",
+        "description": "Very light blue tinted background."
+      }
+    },
+    "typography": {
+      "font_family": {
+        "main": "'Noto Sans KR', sans-serif",
+        "decorative": "'Fredoka One', cursive"
+      },
+      "font_sizes": {
+        "base": "16px",
+        "h1": "2.5rem",
+        "h2": "2rem",
+        "body": "1rem"
+      },
+      "line_height": {
+        "default": "1.5",
+        "tight": "1.2"
+      }
+    },
+    "spacing": {
+      "unit": "8px",
+      "container_max_width": "1200px"
+    },
+    "ui_components": {
+      "buttons": {
+        "border_radius": "24px",
+        "padding": "12px 24px",
+        "shadow": "0 4px 6px rgba(0, 174, 239, 0.2)"
+      },
+      "cards": {
+        "border_radius": "12px",
+        "background": "#FFFFFF",
+        "border": "1px solid #E0E0E0"
+      }
+    }
+  },
+  "visual_style": {
+    "theme": "Bright, Clean, Academic, Youthful",
+    "key_features": [
+      "Light blue and white color palette",
+      "Rounded corners for a friendly feel",
+      "High-quality character illustrations as focal points",
+      "Semi-transparent overlays (Glassmorphism)",
+      "Clean sans-serif typography"
+    ]
+  }
+}

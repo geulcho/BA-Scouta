@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+:root {
+  /* Design Tokens from Style Guide */
+  --color-primary: #00AEEF;
+  --color-secondary: #FFFFFF;
+  --color-accent: #4BDEFF;
+  --color-dark: #2B2B2B;
+  --color-background: #F4F9FF;
+
+  --font-main: 'Noto Sans KR', sans-serif;
+  --font-decorative: 'Fredoka One', cursive;
+
+  --spacing-unit: 8px;
+  --container-max-width: 1200px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background);
+  color: var(--color-dark);
+  font-family: var(--font-main);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: -0.05em;
+  font-family: var(--font-decorative);
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 24px;
+  flex: 1;
+}
+
+/* Glassmorphism Cards */
+.card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(0, 174, 239, 0.1);
+  padding: 24px;
+  margin-bottom: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Buttons */
+.btn {
+  background: var(--color-primary);
+  color: var(--color-secondary);
+  border: none;
+  border-radius: 24px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 174, 239, 0.2);
+  transition: all 0.2s ease;
+  font-family: var(--font-main);
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--color-accent);
+  box-shadow: 0 6px 12px rgba(0, 174, 239, 0.3);
+  transform: scale(1.02);
+}
+
+.btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Animations */
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-entrance {
+  animation: slideUpFade 0.6s ease-out forwards;
+}
+
+/* Modal UI */
+.modal-backdrop { 
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; 
+  background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 1000; 
+}
+.modal-content { 
+  background: #fff; padding: 20px; border-radius: 12px; width: 90%; max-width: 500px; max-height: 80vh; 
+  display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+}
+.modal-header { 
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; 
+}
+.close-btn { 
+  background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--color-dark); 
+}
+.search-input { 
+  width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; 
+  background: #fafafa; color: var(--color-dark); outline: none; 
+}
+.student-list { 
+  flex-grow: 1; overflow-y: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); 
+  gap: 10px; padding-right: 5px; 
+}
+.student-list-item { 
+  display: flex; flex-direction: column; align-items: center; padding: 10px; border-radius: 8px; cursor: pointer; 
+  transition: background 0.2s; text-align: center; font-size: 0.9rem; 
+}
+.student-list-item:hover { background: #f0f0f0; }
+.student-list-item img { width: 60px; height: 60px; border-radius: 50%; margin-bottom: 5px; } 
+
+/* Deck Builder Styles */
+.deck-builder { display: flex; flex-direction: column; }
+.deck-section { background: rgba(255, 255, 255, 0.4); padding: 20px; border-radius: 12px; }
+.help-text { font-size: 0.9rem; color: #555; margin-bottom: 15px; }
+.roster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 12px; }
+.deck-slot { 
+  display: flex; flex-direction: column; align-items: center; background: #fff; padding: 10px; 
+  border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #E0E0E0; 
+}
+.slot-portrait { cursor: pointer; margin-bottom: 8px; }
+.slot-portrait img { 
+  width: 70px; height: 70px; border-radius: 50%; object-fit: cover; 
+  border: 2px solid var(--color-background); transition: transform 0.2s; 
+}
+.slot-portrait:hover img { transform: scale(1.05); }
+.empty-slot { 
+  width: 70px; height: 70px; border-radius: 50%; background: #e0e0e0; display: flex; 
+  align-items: center; justify-content: center; font-size: 1.5rem; color: #888; font-weight: bold; 
+  border: 2px dashed #bbb; transition: background 0.2s; 
+}
+.slot-portrait:hover .empty-slot { background: #d0d0d0; }
+.slot-controls { width: 100%; display: flex; flex-direction: column; gap: 5px; }
+.slot-controls .student-name { 
+  font-size: 0.85rem; font-weight: 600; text-align: center; white-space: nowrap; 
+  overflow: hidden; text-overflow: ellipsis; max-width: 100%; 
+}
+.control-row { display: flex; align-items: center; justify-content: space-between; font-size: 0.8rem; }
+.control-row input { width: 45px; padding: 2px 5px; border: 1px solid #ccc; border-radius: 4px; text-align: right; }
+.control-row select { width: 100%; padding: 2px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.8rem; }
