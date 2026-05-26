@@ -12,9 +12,6 @@ import io
 async def lifespan(app: FastAPI):
     # Load DB on startup
     db.load_data()
-    # Download missing icons asynchronously in background
-    import asyncio
-    asyncio.create_task(db.download_all_icons_async())
     yield
     # Clean up on shutdown
 

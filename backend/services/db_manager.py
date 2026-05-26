@@ -14,7 +14,6 @@ class DBManager:
     def __init__(self):
         self.students = {}
         self.student_list = []
-        os.makedirs(ICONS_DIR, exist_ok=True)
         
     def load_data(self):
         print("Fetching SchaleDB data...")
@@ -61,30 +60,5 @@ class DBManager:
             self.student_list.append(self.students[sid])
             
         print(f"Loaded {len(self.students)} students.")
-        
-    async def download_icon(self, session, sid):
-        icon_path = os.path.join(ICONS_DIR, f"{sid}.webp")
-        if os.path.exists(icon_path):
-            return
-        
-        url = ICON_URL_BASE.format(sid)
-        try:
-            async with session.get(url) as response:
-                if response.status == 200:
-                    data = await response.read()
-                    with open(icon_path, "wb") as f:
-                        f.write(data)
-        except Exception as e:
-            print(f"Failed to download icon for {sid}: {e}")
-
-    async def download_all_icons_async(self):
-        print("Downloading missing icons...")
-        async with aiohttp.ClientSession() as session:
-            tasks = [self.download_icon(session, sid) for sid in self.students.keys()]
-            await asyncio.gather(*tasks)
-        print("Icon download complete.")
-
-    def download_icons_sync(self):
-        asyncio.run(self.download_all_icons_async())
 
 db = DBManager()

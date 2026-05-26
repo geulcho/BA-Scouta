@@ -16,7 +16,7 @@ export default function App() {
   const [editingSlot, setEditingSlot] = useState<{isOpponent: boolean, index: number, targetSquadType: string} | null>(null);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/students')
+    fetch('/api/students')
       .then(res => res.json())
       .then(data => setAllStudents(data.students))
       .catch(err => console.error('Failed to load students', err));
@@ -63,7 +63,7 @@ export default function App() {
     setLoading(true);
     setGuide(null);
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/predict_manual', {
+      const res = await fetch('/api/predict_manual', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
