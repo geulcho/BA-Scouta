@@ -1,13 +1,6 @@
 import { useState, useMemo } from 'react';
 
-interface Student {
-  Id: number;
-  Name: string;
-  BulletType: string;
-  ArmorType: string;
-  SquadType: string;
-  TacticRole: string;
-}
+import type { Student } from './DeckBuilder';
 
 const getRoleIcon = (role: string) => {
   switch (role) {
